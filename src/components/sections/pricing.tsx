@@ -105,7 +105,7 @@ export function Pricing() {
                   <span className="text-sm font-normal text-muted"> / unidad</span>
                 </p>
                 {savings > 0 && (
-                  <p className="mt-1 text-xs font-medium text-gold-500">
+                  <p className="mt-1 text-xs font-medium text-accent">
                     Ahorras {savings}% vs. detal
                   </p>
                 )}
@@ -114,7 +114,7 @@ export function Pricing() {
                 <ul className="mt-6 flex-1 space-y-3">
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2 text-sm text-foreground/90">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" />
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                       {feature}
                     </li>
                   ))}

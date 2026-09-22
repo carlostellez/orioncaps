@@ -71,7 +71,7 @@ export function Hero() {
                 transition={{ duration: 0.35, ease: "easeOut" }}
                 className="text-4xl font-bold leading-tight tracking-tight text-foreground md:text-6xl"
               >
-                <span className="text-gold-500">{active.name}</span>
+                <span className="text-accent">{active.name}</span>
               </motion.h1>
             </AnimatePresence>
           </div>
@@ -84,7 +84,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.3 }}
-                className="text-sm font-medium text-gold-500"
+                className="text-sm font-medium text-accent"
               >
                 {active.tagline}
               </motion.p>
@@ -157,11 +157,11 @@ export function Hero() {
 
           <div className="mt-10 flex flex-wrap gap-6 text-sm text-muted">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="h-4 w-4 text-gold-500" />
+              <ShieldCheck className="h-4 w-4 text-accent" />
               Bordado 3D incluido
             </div>
             <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-gold-500" />
+              <Sparkles className="h-4 w-4 text-accent" />
               {heroProducts.length} modelos disponibles
             </div>
           </div>
@@ -223,7 +223,7 @@ export function Hero() {
           >
             <div className="flex -space-x-0.5">
               {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-3.5 w-3.5 fill-gold-500 text-gold-500" />
+                <Star key={i} className="h-3.5 w-3.5 fill-accent text-accent" />
               ))}
             </div>
             <div className="leading-tight">

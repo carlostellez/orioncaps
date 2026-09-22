@@ -94,23 +94,23 @@ export function LocationSignup() {
             />
             <div className="space-y-3 p-6">
               <div className="flex items-start gap-3 text-sm text-foreground/90">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                 {siteConfig.contact.address}
               </div>
               <a
                 href={`https://wa.me/${siteConfig.contact.whatsapp}`}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-3 text-sm text-foreground/90 hover:text-gold-500"
+                className="flex items-center gap-3 text-sm text-foreground/90 hover:text-accent"
               >
-                <Phone className="h-4 w-4 shrink-0 text-gold-500" />
+                <Phone className="h-4 w-4 shrink-0 text-accent" />
                 +{siteConfig.contact.whatsapp}
               </a>
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                className="flex items-center gap-3 text-sm text-foreground/90 hover:text-gold-500"
+                className="flex items-center gap-3 text-sm text-foreground/90 hover:text-accent"
               >
-                <Mail className="h-4 w-4 shrink-0 text-gold-500" />
+                <Mail className="h-4 w-4 shrink-0 text-accent" />
                 {siteConfig.contact.email}
               </a>
             </div>

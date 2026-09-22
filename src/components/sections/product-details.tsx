@@ -43,7 +43,7 @@ export function ProductDetails() {
             transition={{ duration: 0.5 }}
             className="lg:sticky lg:top-28 lg:self-start"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-500">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
               Ficha técnica
             </p>
             <h2 className="mt-3 text-3xl font-bold leading-tight text-foreground md:text-4xl">
@@ -69,12 +69,12 @@ export function ProductDetails() {
                   transition={{ duration: 0.5, delay: i * 0.08 }}
                   className="relative flex gap-6 pl-0"
                 >
-                  <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold-500/40 bg-background text-xs font-semibold text-gold-500">
+                  <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold-500/40 bg-background text-xs font-semibold text-accent">
                     {String(i + 1).padStart(2, "0")}
                   </div>
                   <div className="flex-1 pb-2">
                     <div className="flex items-center gap-2">
-                      <detail.icon className="h-5 w-5 text-gold-500" />
+                      <detail.icon className="h-5 w-5 text-accent" />
                       <h3 className="text-lg font-semibold text-foreground">
                         {detail.title}
                       </h3>

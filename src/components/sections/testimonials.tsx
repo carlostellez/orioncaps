@@ -72,7 +72,7 @@ export function Testimonials() {
               </span>
 
               <div className="relative flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold-500/15 text-sm font-semibold text-gold-500">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold-500/15 text-sm font-semibold text-accent">
                   {initials(t.name)}
                 </div>
                 <div>
@@ -83,7 +83,7 @@ export function Testimonials() {
 
               <div className="relative mt-5 flex gap-1">
                 {Array.from({ length: 5 }).map((_, idx) => (
-                  <Star key={idx} className="h-3.5 w-3.5 fill-gold-500 text-gold-500" />
+                  <Star key={idx} className="h-3.5 w-3.5 fill-accent text-accent" />
                 ))}
               </div>
 

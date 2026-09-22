@@ -3,6 +3,13 @@ import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 
+export const viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fefdfb" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c0a08" },
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {

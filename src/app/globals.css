@@ -3,21 +3,31 @@
 
 /* Modo claro (por defecto) */
 :root {
-  --background: #ffffff;
-  --foreground: #161616;
-  --surface: #f4f4f5;
-  --border: #e4e4e7;
-  --muted: #52525b;
+  --background: #fefdfb;
+  --foreground: #17130f;
+  --surface: #f6f4ef;
+  --surface-elevated: #ffffff;
+  --border: #e5e0d5;
+  --border-strong: #cfc7b6;
+  --muted: #5c5346;
+  /* Dorado ajustado para uso como TEXTO/ícono informativo (cumple AA,
+     >= 4.5:1 sobre el fondo del tema). El dorado de marca (gold-500) se
+     reserva para fondos de botón, bordes, washes decorativos y el
+     logotipo, donde la regla de contraste de texto no aplica. */
+  --accent: #805f23;
 }
 
 /* Modo oscuro: sigue la preferencia del sistema/navegador del usuario */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #09090b;
-    --foreground: #ffffff;
-    --surface: #18181b;
-    --border: #27272a;
-    --muted: #a1a1aa;
+    --background: #0c0a08;
+    --foreground: #fdfcfa;
+    --surface: #17130f;
+    --surface-elevated: #211c16;
+    --border: #2b251e;
+    --border-strong: #423b31;
+    --muted: #a39a86;
+    --accent: #c5a059;
   }
 }
 
@@ -25,26 +35,31 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-muted: var(--muted);
+  --color-accent: var(--accent);
 
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* Orion Caps brand palette — Neutros/Negros (disponible para casos puntuales) */
-  --color-black-50: #f4f4f5;
-  --color-black-100: #e4e4e7;
-  --color-black-200: #d4d4d8;
-  --color-black-300: #a1a1aa;
-  --color-black-400: #71717a;
-  --color-black-500: #52525b;
-  --color-black-600: #3f3f46;
-  --color-black-700: #27272a;
-  --color-black-800: #18181b;
-  --color-black-900: #09090b;
-  --color-black-950: #030303;
+  /* Orion Caps brand palette — Neutros (escala cálida, coherente con el dorado
+     de marca; no compite en temperatura de color con los acentos gold-*). */
+  --color-black-50: #f8f7f4;
+  --color-black-100: #f0eee8;
+  --color-black-200: #e2ded4;
+  --color-black-300: #c7c0b0;
+  --color-black-400: #a39a86;
+  --color-black-500: #7d7364;
+  --color-black-600: #5c5346;
+  --color-black-700: #423b31;
+  --color-black-800: #2b251e;
+  --color-black-900: #17130f;
+  --color-black-950: #0c0a08;
 
-  /* Orion Caps brand palette — Dorados (color de marca, no cambia con el tema) */
+  /* Orion Caps brand palette — Dorados (color de marca oficial, no cambia
+     con el tema; valores tomados de la guía de marca "Orion Color Palette"). */
   --color-gold-50: #fdfbf0;
   --color-gold-100: #faf4d0;
   --color-gold-200: #f4e699;
@@ -86,4 +101,9 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+::selection {
+  background: var(--color-gold-300);
+  color: var(--color-black-900);
 }

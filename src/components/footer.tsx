@@ -62,7 +62,7 @@ export function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={social.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-gold-500 hover:text-gold-500"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-accent hover:text-accent"
                 >
                   <social.icon className="h-4 w-4" />
                 </a>
@@ -77,7 +77,7 @@ export function Footer() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-foreground/80 transition-colors hover:text-gold-500"
+                  className="text-sm text-foreground/80 transition-colors hover:text-accent"
                 >
                   {link.label}
                 </a>
@@ -96,12 +96,12 @@ export function Footer() {
                   rel={contact.href.startsWith("http") ? "noreferrer" : undefined}
                   className="group flex items-start gap-3"
                 >
-                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-background text-gold-500">
+                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-background text-accent">
                     <contact.icon className="h-4 w-4" />
                   </span>
                   <span>
                     <span className="block text-xs text-muted">{contact.label}</span>
-                    <span className="block text-sm text-foreground/80 transition-colors group-hover:text-gold-500">
+                    <span className="block text-sm text-foreground/80 transition-colors group-hover:text-accent">
                       {contact.value}
                     </span>
                   </span>
@@ -115,7 +115,7 @@ export function Footer() {
           <p>&copy; {new Date().getFullYear()} Orion Caps. Todos los derechos reservados.</p>
           <p className="flex items-center gap-1.5">
             Hecho con
-            <span className="text-gold-500">&#9733;</span>
+            <span className="text-accent">&#9733;</span>
             en Bogotá, Colombia
           </p>
         </div>

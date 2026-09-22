@@ -50,7 +50,7 @@ export function Faq() {
             transition={{ duration: 0.5 }}
             className="lg:sticky lg:top-28 lg:self-start"
           >
-            <MessageCircleQuestion className="h-9 w-9 text-gold-500" />
+            <MessageCircleQuestion className="h-9 w-9 text-accent" />
             <h2 className="mt-4 text-3xl font-bold leading-tight text-foreground md:text-4xl">
               Preguntas frecuentes
             </h2>

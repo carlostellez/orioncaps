@@ -120,7 +120,7 @@ export function MarketStats() {
               strokeWidth={1}
             />
             <p className="relative text-2xl font-semibold leading-snug text-foreground">
-              La <span className="text-gold-500">gorra</span> dejó de ser un
+              La <span className="text-accent">gorra</span> dejó de ser un
               accesorio para convertirse en un símbolo de identidad, estilo y
               cultura.
             </p>
@@ -140,7 +140,7 @@ export function MarketStats() {
               className="rounded-3xl border border-border bg-surface/60 p-8"
             >
               <div className="flex items-center justify-between">
-                <stat.icon className="h-6 w-6 text-gold-500" />
+                <stat.icon className="h-6 w-6 text-accent" />
                 <span className="text-3xl font-bold text-border">
                   {String(i + 1).padStart(2, "0")}
                 </span>

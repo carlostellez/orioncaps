@@ -16,7 +16,7 @@ export default function OpengraphImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#09090b",
+          backgroundColor: "#17130f",
           backgroundImage:
             "radial-gradient(circle at 22% 25%, rgba(197,160,89,0.35), transparent 45%), radial-gradient(circle at 80% 85%, rgba(197,160,89,0.2), transparent 40%)",
         }}
@@ -40,7 +40,7 @@ export default function OpengraphImage() {
             display: "flex",
             marginTop: 24,
             fontSize: 32,
-            color: "#a1a1aa",
+            color: "#a39a86",
           }}
         >
           Gorras al por mayor y detal
@@ -52,7 +52,7 @@ export default function OpengraphImage() {
             padding: "12px 28px",
             borderRadius: 999,
             backgroundColor: "#a37e36",
-            color: "#09090b",
+            color: "#17130f",
             fontSize: 26,
             fontWeight: 600,
           }}
