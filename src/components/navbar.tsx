@@ -7,15 +7,18 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 
+// Navegación principal: solo las paradas que de verdad ayudan a decidir
+// una compra. "Colores" y "Mercado" siguen siendo secciones completas de
+// la página (y están en el footer), pero no compiten por espacio aquí —
+// un menú con 8 ítems apretados se ve amateur; uno con 6 bien espaciados
+// se ve profesional.
 const links = [
   { href: "#nosotros", label: "Nosotros" },
-  { href: "#producto", label: "El producto" },
-  { href: "#colores", label: "Colores" },
-  { href: "#mercado", label: "Mercado" },
-  { href: "#mayoreo", label: "Mayoreo" },
+  { href: "#producto", label: "Producto" },
+  { href: "#mayoreo", label: "Precios" },
   { href: "#testimonios", label: "Testimonios" },
-  { href: "#ubicacion", label: "Ubícanos" },
-  { href: "#faq", label: "Preguntas frecuentes" },
+  { href: "#ubicacion", label: "Ubicación" },
+  { href: "#faq", label: "Preguntas" },
 ];
 
 export function Navbar() {
@@ -54,42 +57,45 @@ export function Navbar() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "border-b border-border bg-background/90 py-2 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-md"
-          : "border-b border-transparent bg-background/40 py-4 backdrop-blur-sm"
+          ? "border-b border-border bg-background/95 py-3 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-md"
+          : "border-b border-transparent bg-background/40 py-5 backdrop-blur-sm"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6">
-        <a href="#top" className="group flex items-center gap-2 text-lg font-bold tracking-tight text-foreground">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6">
+        <a
+          href="#top"
+          className="group flex shrink-0 items-center gap-2 text-lg font-bold tracking-tight text-foreground"
+        >
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-black-900 text-xs font-black text-gold-500 transition-transform group-hover:rotate-12">
             O
           </span>
           Orion<span className="text-gold-500">Caps</span>
         </a>
 
-        <div className="hidden items-center gap-1 rounded-full border border-border/70 bg-surface/60 p-1 md:flex">
+        <div className="hidden flex-1 items-center justify-center gap-9 md:flex">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="relative rounded-full px-3.5 py-1.5 text-sm text-muted transition-colors hover:text-foreground"
+              className={`relative py-2 text-sm font-medium transition-colors ${
+                active === link.href
+                  ? "text-foreground"
+                  : "text-muted hover:text-foreground"
+              }`}
             >
+              {link.label}
               {active === link.href && (
                 <motion.span
-                  layoutId="nav-active-pill"
-                  className="absolute inset-0 rounded-full bg-black-900"
+                  layoutId="nav-active-underline"
+                  className="absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full bg-gold-500"
                   transition={{ type: "spring", stiffness: 400, damping: 32 }}
                 />
               )}
-              <span
-                className={`relative z-10 ${active === link.href ? "text-gold-500" : ""}`}
-              >
-                {link.label}
-              </span>
             </a>
           ))}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-3">
           <ThemeToggle />
 
           <div className="hidden md:block">
