@@ -54,3 +54,46 @@ export const productConfig = {
   ],
   fit: "Ajuste snapback (talla única ajustable)",
 } as const;
+
+// Modelos que se muestran en el carrusel del hero. Son productos DISTINTOS
+// (no colores del mismo producto) — el primero es el producto insignia
+// (mismo nombre/precio/descripción que productConfig, arriba). Los otros
+// tres son modelos de EJEMPLO: nombres, descripciones y precios
+// placeholder, fáciles de reemplazar por el catálogo real.
+export const heroProducts = [
+  {
+    slug: "snapback-classic",
+    name: productConfig.name,
+    tagline: "Diseño urbano, calidad premium",
+    description: productConfig.description,
+    price: productConfig.priceDetal,
+    accentHex: "#111214", // Negro Onix
+  },
+  {
+    slug: "trucker",
+    name: "Orion Cap Trucker",
+    tagline: "Frescura para el día a día",
+    description:
+      "Panel frontal estructurado y malla trasera transpirable, ideal para climas cálidos y uso diario.",
+    price: 79900,
+    accentHex: "#1c2a4a", // Azul Marino
+  },
+  {
+    slug: "dad-hat",
+    name: "Orion Cap Dad Hat",
+    tagline: "Ajuste relajado, estilo desenfadado",
+    description:
+      "Corte bajo desestructurado en algodón lavado, para un calce cómodo desde el primer uso.",
+    price: 69900,
+    accentHex: "#4b4d52", // Gris Grafito
+  },
+  {
+    slug: "bordado-premium",
+    name: "Orion Cap Bordado Premium",
+    tagline: "La edición más exclusiva",
+    description:
+      "Bordado 3D XL y detalles en cuero genuino en la correa trasera, para quienes buscan un extra de exclusividad.",
+    price: 109900,
+    accentHex: "#3f4a34", // Verde Militar
+  },
+] as const;
