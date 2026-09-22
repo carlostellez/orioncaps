@@ -1,8 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck, Sparkles, Star } from "lucide-react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  ShieldCheck,
+  Sparkles,
+  Star,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -14,13 +21,47 @@ const priceFormatter = new Intl.NumberFormat("es-CO", {
   maximumFractionDigits: 0,
 });
 
+// Una frase corta por color, solo para el carrusel del hero.
+const TAGLINES: Record<string, string> = {
+  "Negro Onix": "El favorito de la calle: combina con todo.",
+  "Gris Grafito": "Versátil y sobrio, para el uso diario.",
+  "Azul Marino": "Un clásico atemporal con actitud.",
+  "Verde Militar": "Inspiración militar, espíritu urbano.",
+};
+
+const slides = productConfig.colorSwatches.map((swatch) => ({
+  ...swatch,
+  tagline: TAGLINES[swatch.name] ?? "",
+}));
+
+const AUTOPLAY_MS = 5000;
+
 export function Hero() {
-  const [activeColor, setActiveColor] = useState<
-    (typeof productConfig.colorSwatches)[number]
-  >(productConfig.colorSwatches[0]);
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const active = slides[index];
+
+  const goTo = (i: number) => setIndex((i + slides.length) % slides.length);
+  const next = () => goTo(index + 1);
+  const prev = () => goTo(index - 1);
+
+  // Autoplay: avanza sola cada 5s, se reinicia cada vez que el usuario
+  // navega manualmente y se detiene mientras el mouse está sobre el hero.
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % slides.length);
+    }, AUTOPLAY_MS);
+    return () => clearInterval(id);
+  }, [index, paused]);
 
   return (
-    <section id="top" className="relative overflow-hidden px-6 pt-20 pb-24 md:pt-28 md:pb-32">
+    <section
+      id="top"
+      className="relative overflow-hidden px-6 pt-20 pb-24 md:pt-28 md:pb-32"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       <div
         className="pointer-events-none absolute inset-0 -z-10 opacity-40"
         style={{
@@ -30,6 +71,7 @@ export function Hero() {
       />
 
       <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
+        {/* Izquierda: información del producto, cambia con cada slide */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -42,7 +84,22 @@ export function Hero() {
             urbano, calidad premium
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+          <div className="mt-4 h-6 overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={active.name}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.3 }}
+                className="text-sm font-medium text-gold-500"
+              >
+                {active.name} — {active.tagline}
+              </motion.p>
+            </AnimatePresence>
+          </div>
+
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted">
             {productConfig.description}
           </p>
 
@@ -53,26 +110,21 @@ export function Hero() {
             <span className="text-sm text-muted">precio al detal · unidad</span>
           </div>
 
-          {/* Selector de color: interactivo, cambia el acento de la tarjeta de producto */}
+          {/* Los swatches funcionan como controles del carrusel */}
           <div className="mt-6">
-            <p className="text-xs font-medium text-muted">
-              Color: <span className="text-foreground">{activeColor.name}</span>
-            </p>
+            <p className="text-xs font-medium text-muted">Elige un color</p>
             <div className="mt-2 flex gap-2">
-              {productConfig.colorSwatches.map((swatch) => (
+              {slides.map((swatch, i) => (
                 <button
                   key={swatch.name}
                   type="button"
-                  onClick={() => setActiveColor(swatch)}
-                  aria-label={swatch.name}
-                  aria-pressed={activeColor.name === swatch.name}
+                  onClick={() => goTo(i)}
+                  aria-label={`Ver ${swatch.name}`}
+                  aria-pressed={index === i}
                   className="h-8 w-8 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background transition-transform hover:scale-110"
                   style={{
                     backgroundColor: swatch.hex,
-                    outline:
-                      activeColor.name === swatch.name
-                        ? "2px solid var(--color-gold-500)"
-                        : "none",
+                    outline: index === i ? "2px solid var(--color-gold-500)" : "none",
                     outlineOffset: 2,
                   }}
                 />
@@ -103,6 +155,7 @@ export function Hero() {
           </div>
         </motion.div>
 
+        {/* Derecha: carrusel de imágenes, una por color */}
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -112,18 +165,45 @@ export function Hero() {
           <div
             className="relative aspect-square w-full overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-surface to-background transition-colors duration-500"
             style={{
-              boxShadow: `0 0 0 1px transparent, 0 40px 80px -20px ${activeColor.hex}55`,
+              boxShadow: `0 0 0 1px transparent, 0 40px 80px -20px ${active.hex}55`,
             }}
           >
-            <div className="flex h-full w-full items-center justify-center">
-              <span
-                className="text-8xl"
-                role="img"
-                aria-label={`${productConfig.name} en color ${activeColor.name}`}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.name}
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -40 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="flex h-full w-full items-center justify-center"
               >
-                {"🧢"}
-              </span>
-            </div>
+                <span
+                  className="text-8xl"
+                  role="img"
+                  aria-label={`${productConfig.name} en color ${active.name}`}
+                >
+                  {"🧢"}
+                </span>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Flechas del carrusel */}
+            <button
+              type="button"
+              onClick={prev}
+              aria-label="Color anterior"
+              className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-border bg-background/80 p-2 text-foreground backdrop-blur transition-colors hover:bg-surface"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              type="button"
+              onClick={next}
+              aria-label="Siguiente color"
+              className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-border bg-background/80 p-2 text-foreground backdrop-blur transition-colors hover:bg-surface"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
           </div>
 
           {/* Tarjeta flotante: reseñas (dato de ejemplo, pendiente de confirmar) */}
