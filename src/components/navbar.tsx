@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const links = [
   { href: "#producto", label: "El producto" },
@@ -87,19 +88,23 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden md:block">
-          <Button size="sm" asChild>
-            <a href="#cotizar">Cotiza al por mayor</a>
-          </Button>
-        </div>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
 
-        <button
-          className="text-foreground md:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Abrir menú"
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+          <div className="hidden md:block">
+            <Button size="sm" asChild>
+              <a href="#cotizar">Cotiza al por mayor</a>
+            </Button>
+          </div>
+
+          <button
+            className="text-foreground md:hidden"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Abrir menú"
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>

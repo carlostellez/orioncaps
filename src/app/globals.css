@@ -1,7 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Modo claro (por defecto) */
+/* Modo claro (por defecto, y también cuando el interruptor de tema fuerza
+   "claro" aunque el sistema esté en oscuro). */
 :root {
   --background: #fefdfb;
   --foreground: #17130f;
@@ -17,9 +18,15 @@
   --accent: #805f23;
 }
 
-/* Modo oscuro: sigue la preferencia del sistema/navegador del usuario */
+/* Modo oscuro — se aplica en dos casos:
+   1) el sistema/navegador prefiere oscuro y la persona no forzó "claro"
+      manualmente con el interruptor de tema.
+   2) la persona forzó "oscuro" con el interruptor, sin importar el sistema.
+   El interruptor (ThemeToggle) escribe data-theme="light"|"dark" en <html>
+   y lo guarda en localStorage; sin esa preferencia, el sitio sigue el
+   sistema como antes. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --background: #0c0a08;
     --foreground: #fdfcfa;
     --surface: #17130f;
@@ -29,6 +36,17 @@
     --muted: #a39a86;
     --accent: #c5a059;
   }
+}
+
+:root[data-theme="dark"] {
+  --background: #0c0a08;
+  --foreground: #fdfcfa;
+  --surface: #17130f;
+  --surface-elevated: #211c16;
+  --border: #2b251e;
+  --border-strong: #423b31;
+  --muted: #a39a86;
+  --accent: #c5a059;
 }
 
 @theme inline {
