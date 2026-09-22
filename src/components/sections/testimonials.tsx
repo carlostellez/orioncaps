@@ -37,7 +37,7 @@ export function Testimonials() {
           transition={{ duration: 0.5 }}
           className="mx-auto max-w-2xl text-center"
         >
-          <h2 className="text-3xl font-bold text-white md:text-4xl">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">
             Con la confianza de tiendas y distribuidores
           </h2>
         </motion.div>
@@ -57,11 +57,11 @@ export function Testimonials() {
                     <Star key={idx} className="h-4 w-4 fill-gold-500 text-gold-500" />
                   ))}
                 </div>
-                <p className="mt-4 text-sm leading-relaxed text-black-200">
+                <p className="mt-4 text-sm leading-relaxed text-foreground/90">
                   “{t.quote}”
                 </p>
-                <p className="mt-6 text-sm font-semibold text-white">{t.name}</p>
-                <p className="text-xs text-black-400">{t.role}</p>
+                <p className="mt-6 text-sm font-semibold text-foreground">{t.name}</p>
+                <p className="text-xs text-muted">{t.role}</p>
               </Card>
             </motion.div>
           ))}

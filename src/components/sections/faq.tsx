@@ -43,7 +43,7 @@ export function Faq() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <h2 className="text-3xl font-bold text-white md:text-4xl">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">
             Preguntas frecuentes
           </h2>
         </motion.div>

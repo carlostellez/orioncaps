@@ -1,18 +1,37 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Modo claro (por defecto) */
 :root {
-  --background: #09090b;
-  --foreground: #ffffff;
+  --background: #ffffff;
+  --foreground: #161616;
+  --surface: #f4f4f5;
+  --border: #e4e4e7;
+  --muted: #52525b;
+}
+
+/* Modo oscuro: sigue la preferencia del sistema/navegador del usuario */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #09090b;
+    --foreground: #ffffff;
+    --surface: #18181b;
+    --border: #27272a;
+    --muted: #a1a1aa;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* Orion Caps brand palette — Neutros/Negros */
+  /* Orion Caps brand palette — Neutros/Negros (disponible para casos puntuales) */
   --color-black-50: #f4f4f5;
   --color-black-100: #e4e4e7;
   --color-black-200: #d4d4d8;
@@ -25,7 +44,7 @@
   --color-black-900: #09090b;
   --color-black-950: #030303;
 
-  /* Orion Caps brand palette — Dorados */
+  /* Orion Caps brand palette — Dorados (color de marca, no cambia con el tema) */
   --color-gold-50: #fdfbf0;
   --color-gold-100: #faf4d0;
   --color-gold-200: #f4e699;
@@ -66,4 +85,5 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }

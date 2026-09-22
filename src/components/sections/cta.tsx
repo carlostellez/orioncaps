@@ -12,12 +12,12 @@ export function CallToAction() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="mx-auto max-w-4xl overflow-hidden rounded-3xl border border-gold-500/30 bg-gradient-to-br from-gold-500/10 via-black-800 to-black-800 p-10 text-center md:p-16"
+        className="mx-auto max-w-4xl overflow-hidden rounded-3xl border border-gold-500/30 bg-gradient-to-br from-gold-500/10 via-surface to-surface p-10 text-center md:p-16"
       >
-        <h2 className="text-3xl font-bold text-white md:text-4xl">
+        <h2 className="text-3xl font-bold text-foreground md:text-4xl">
           ¿Listo para surtir tu tienda?
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-black-300">
+        <p className="mx-auto mt-4 max-w-xl text-muted">
           Escríbenos con la cantidad y los modelos que necesitas. Te
           respondemos con tu cotización en menos de 24 horas.
         </p>

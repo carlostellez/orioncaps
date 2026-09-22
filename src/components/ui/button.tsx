@@ -6,16 +6,17 @@ import { cn } from "@/lib/utils";
 
 // Regla de accesibilidad WCAG (paleta Orion Caps): nunca texto blanco
 // sobre botones dorados; usar siempre texto oscuro (black-900) sobre gold.
+// El dorado es el color de marca y no cambia entre modo claro/oscuro.
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black-900 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         default:
           "bg-gold-600 text-black-900 hover:bg-gold-400 shadow-lg shadow-gold-500/20",
         outline:
-          "border border-black-600 text-white hover:bg-black-800",
-        ghost: "text-white hover:bg-black-800",
+          "border border-border text-foreground hover:bg-surface",
+        ghost: "text-foreground hover:bg-surface",
       },
       size: {
         default: "h-11 px-6 py-2",

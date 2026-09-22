@@ -43,10 +43,10 @@ export function Features() {
           transition={{ duration: 0.5 }}
           className="mx-auto max-w-2xl text-center"
         >
-          <h2 className="text-3xl font-bold text-white md:text-4xl">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">
             Todo lo que necesitas para vender gorras
           </h2>
-          <p className="mt-4 text-black-300">
+          <p className="mt-4 text-muted">
             Desde una tienda pequeña hasta un distribuidor nacional, tenemos
             un plan de suministro para tu negocio.
           </p>

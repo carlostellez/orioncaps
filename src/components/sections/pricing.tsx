@@ -49,10 +49,10 @@ export function Pricing() {
           transition={{ duration: 0.5 }}
           className="mx-auto max-w-2xl text-center"
         >
-          <h2 className="text-3xl font-bold text-white md:text-4xl">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">
             Precios según tu volumen de compra
           </h2>
-          <p className="mt-4 text-black-300">
+          <p className="mt-4 text-muted">
             Entre más compres, más bajo es tu costo por unidad. Sin letra
             pequeña.
           </p>
@@ -70,7 +70,7 @@ export function Pricing() {
                 "flex flex-col rounded-2xl border p-8",
                 tier.highlighted
                   ? "border-gold-500/50 bg-gold-500/[0.06] shadow-xl shadow-gold-500/10"
-                  : "border-black-700 bg-black-800/40"
+                  : "border-border bg-surface/60"
               )}
             >
               {tier.highlighted && (
@@ -78,15 +78,15 @@ export function Pricing() {
                   Más elegido
                 </span>
               )}
-              <h3 className="text-xl font-bold text-white">{tier.name}</h3>
-              <span className="mt-1 inline-block w-fit rounded-full bg-gold-500/15 px-2 py-0.5 text-xs font-semibold text-white">
+              <h3 className="text-xl font-bold text-foreground">{tier.name}</h3>
+              <span className="mt-1 inline-block w-fit rounded-full bg-gold-500/15 px-2 py-0.5 text-xs font-semibold text-foreground">
                 {tier.range}
               </span>
-              <p className="mt-3 text-sm text-black-300">{tier.description}</p>
+              <p className="mt-3 text-sm text-muted">{tier.description}</p>
 
               <ul className="mt-6 flex-1 space-y-3">
                 {tier.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-sm text-black-200">
+                  <li key={feature} className="flex items-start gap-2 text-sm text-foreground/90">
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" />
                     {feature}
                   </li>

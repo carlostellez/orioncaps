@@ -16,9 +16,9 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black-700/80 bg-black-900/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-border/80 bg-background/80 backdrop-blur-md">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#top" className="text-lg font-bold tracking-tight text-white">
+        <a href="#top" className="text-lg font-bold tracking-tight text-foreground">
           Orion<span className="text-gold-500">Caps</span>
         </a>
 
@@ -27,7 +27,7 @@ export function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-black-300 transition-colors hover:text-white"
+              className="text-sm text-muted transition-colors hover:text-foreground"
             >
               {link.label}
             </a>
@@ -41,7 +41,7 @@ export function Navbar() {
         </div>
 
         <button
-          className="text-white md:hidden"
+          className="text-foreground md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Abrir menú"
         >
@@ -50,14 +50,14 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-black-700 px-6 py-4 md:hidden">
+        <div className="border-t border-border px-6 py-4 md:hidden">
           <div className="flex flex-col gap-4">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-sm text-black-300 hover:text-white"
+                className="text-sm text-muted hover:text-foreground"
               >
                 {link.label}
               </a>

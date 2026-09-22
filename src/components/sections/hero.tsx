@@ -25,12 +25,12 @@ export function Hero() {
         >
           <Badge>Mayoreo y detal en toda la república</Badge>
 
-          <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-white md:text-6xl">
+          <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-foreground md:text-6xl">
             Gorras de calidad premium,{" "}
             <span className="text-gold-500">al precio de mayoreo</span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-black-300">
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
             En Orion Caps confeccionamos y distribuimos gorras para tiendas,
             distribuidores y marcas. Compra por unidad o por volumen, con
             personalización y bordado incluidos.
@@ -47,7 +47,7 @@ export function Hero() {
             </Button>
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-6 text-sm text-black-300">
+          <div className="mt-10 flex flex-wrap gap-6 text-sm text-muted">
             <div className="flex items-center gap-2">
               <ShieldCheck className="h-4 w-4 text-gold-500" />
               Calidad garantizada
@@ -63,10 +63,10 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
-          className="relative aspect-square w-full max-w-md justify-self-center overflow-hidden rounded-3xl border border-black-700 bg-gradient-to-br from-black-800 to-black-900 md:justify-self-end"
+          className="relative aspect-square w-full max-w-md justify-self-center overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-surface to-background md:justify-self-end"
         >
           <div className="flex h-full w-full items-center justify-center">
-            <span className="text-8xl">\u{1F9E2}</span>
+            <span className="text-8xl">{"🧢"}</span>
           </div>
         </motion.div>
       </div>
