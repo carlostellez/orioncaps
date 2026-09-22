@@ -44,5 +44,13 @@ export const productConfig = {
   priceDistribuidorDesde: 52000,
   currency: "COP",
   colors: ["Negro Onix", "Gris Grafito", "Azul Marino", "Verde Militar"],
+  // Tonos aproximados solo para el selector visual del hero; ajustar cuando
+  // haya fotografía real del producto.
+  colorSwatches: [
+    { name: "Negro Onix", hex: "#111214" },
+    { name: "Gris Grafito", hex: "#4b4d52" },
+    { name: "Azul Marino", hex: "#1c2a4a" },
+    { name: "Verde Militar", hex: "#3f4a34" },
+  ],
   fit: "Ajuste snapback (talla única ajustable)",
 } as const;
