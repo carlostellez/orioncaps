@@ -166,6 +166,10 @@ export function LocationSignup() {
                 <option value="Varios modelos">Varios modelos</option>
               </select>
               <input
+                type="number"
+                inputMode="numeric"
+                min={1}
+                step={1}
                 placeholder="Cantidad estimada / mes"
                 value={form.cantidad}
                 onChange={update("cantidad")}
