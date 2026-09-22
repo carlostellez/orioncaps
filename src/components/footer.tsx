@@ -3,6 +3,7 @@ import { Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle } from "luci
 import { productConfig, siteConfig } from "@/lib/site-config";
 
 const navLinks = [
+  { href: "#nosotros", label: "Nosotros" },
   { href: "#producto", label: "El producto" },
   { href: "#mercado", label: "Mercado" },
   { href: "#mayoreo", label: "Mayoreo" },

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const links = [
+  { href: "#nosotros", label: "Nosotros" },
   { href: "#producto", label: "El producto" },
   { href: "#colores", label: "Colores" },
   { href: "#mercado", label: "Mercado" },
