@@ -1,10 +1,25 @@
+import { Navbar } from "@/components/navbar";
+import { Hero } from "@/components/sections/hero";
+import { Features } from "@/components/sections/features";
+import { Pricing } from "@/components/sections/pricing";
+import { Testimonials } from "@/components/sections/testimonials";
+import { Faq } from "@/components/sections/faq";
+import { CallToAction } from "@/components/sections/cta";
+import { Footer } from "@/components/footer";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <h1 className="text-4xl font-bold">Orion Caps</h1>
-      <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-        Proyecto Next.js iniciado correctamente.
-      </p>
-    </main>
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <Features />
+        <Pricing />
+        <Testimonials />
+        <Faq />
+        <CallToAction />
+      </main>
+      <Footer />
+    </>
   );
 }

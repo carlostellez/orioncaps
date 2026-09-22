@@ -1,8 +1,9 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #09090b;
+  --foreground: #ffffff;
 }
 
 @theme inline {
@@ -10,12 +11,54 @@
   --color-foreground: var(--foreground);
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Orion Caps brand palette — Neutros/Negros */
+  --color-black-50: #f4f4f5;
+  --color-black-100: #e4e4e7;
+  --color-black-200: #d4d4d8;
+  --color-black-300: #a1a1aa;
+  --color-black-400: #71717a;
+  --color-black-500: #52525b;
+  --color-black-600: #3f3f46;
+  --color-black-700: #27272a;
+  --color-black-800: #18181b;
+  --color-black-900: #09090b;
+  --color-black-950: #030303;
+
+  /* Orion Caps brand palette — Dorados */
+  --color-gold-50: #fdfbf0;
+  --color-gold-100: #faf4d0;
+  --color-gold-200: #f4e699;
+  --color-gold-300: #ead35b;
+  --color-gold-400: #e1c128;
+  --color-gold-500: #c5a059;
+  --color-gold-600: #a37e36;
+  --color-gold-700: #805f23;
+  --color-gold-800: #604419;
+  --color-gold-900: #432e11;
+
+  /* Feedback */
+  --color-success: #10b981;
+  --color-error: #ef4444;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
   }
 }
 
