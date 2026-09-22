@@ -22,6 +22,7 @@ export const siteConfig = {
     // TODO: reemplazar por el número real de WhatsApp (formato internacional, sin +)
     whatsapp: "573000000000",
     email: "ventas@orioncaps.com",
+    address: "Calle 151 # 11 - 86, Bogotá, Colombia",
   },
   social: {
     // TODO: reemplazar por las URLs reales cuando existan las cuentas

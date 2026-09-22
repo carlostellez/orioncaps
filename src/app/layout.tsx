@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -57,6 +58,7 @@ export default function RootLayout({
     <html lang="es">
       <body className="bg-background text-foreground antialiased">
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );

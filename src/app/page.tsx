@@ -5,6 +5,7 @@ import { ProductShowcase } from "@/components/sections/product-showcase";
 import { MarketStats } from "@/components/sections/market-stats";
 import { Pricing } from "@/components/sections/pricing";
 import { Testimonials } from "@/components/sections/testimonials";
+import { LocationSignup } from "@/components/sections/location-signup";
 import { Faq } from "@/components/sections/faq";
 import { CallToAction } from "@/components/sections/cta";
 import { Footer } from "@/components/footer";
@@ -22,6 +23,7 @@ export default function Home() {
         <MarketStats />
         <Pricing />
         <Testimonials />
+        <LocationSignup />
         <Faq />
         <CallToAction />
       </main>

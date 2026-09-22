@@ -11,6 +11,7 @@ const links = [
   { href: "#mercado", label: "Mercado" },
   { href: "#mayoreo", label: "Mayoreo" },
   { href: "#testimonios", label: "Testimonios" },
+  { href: "#ubicacion", label: "Ubícanos" },
   { href: "#faq", label: "Preguntas frecuentes" },
 ];
 
