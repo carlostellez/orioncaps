@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/lib/site-config";
+import { heroProducts, siteConfig } from "@/lib/site-config";
 
 const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
   siteConfig.contact.address
@@ -15,24 +15,30 @@ type FormState = {
   nombre: string;
   negocio: string;
   ciudad: string;
+  producto: string;
   cantidad: string;
   telefono: string;
+  email: string;
 };
 
 const initialState: FormState = {
   nombre: "",
   negocio: "",
   ciudad: "",
+  producto: heroProducts[0].name,
   cantidad: "",
   telefono: "",
+  email: "",
 };
 
 export function LocationSignup() {
   const [form, setForm] = useState<FormState>(initialState);
 
-  const update = (field: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm((prev) => ({ ...prev, [field]: e.target.value }));
-  };
+  const update =
+    (field: keyof FormState) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+      setForm((prev) => ({ ...prev, [field]: e.target.value }));
+    };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,8 +48,10 @@ export function LocationSignup() {
       `Nombre: ${form.nombre}`,
       `Negocio/Tienda: ${form.negocio}`,
       `Ciudad: ${form.ciudad}`,
+      `Producto de interés: ${form.producto}`,
       `Cantidad estimada mensual: ${form.cantidad}`,
       `Teléfono de contacto: ${form.telefono}`,
+      `Correo: ${form.email}`,
     ].join("\n");
 
     const href = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(message)}`;
@@ -142,6 +150,18 @@ export function LocationSignup() {
                 onChange={update("ciudad")}
                 className="rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-gold-500"
               />
+              <select
+                value={form.producto}
+                onChange={update("producto")}
+                className="rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-gold-500"
+              >
+                {heroProducts.map((product) => (
+                  <option key={product.slug} value={product.name}>
+                    {product.name}
+                  </option>
+                ))}
+                <option value="Varios modelos">Varios modelos</option>
+              </select>
               <input
                 placeholder="Cantidad estimada / mes"
                 value={form.cantidad}
@@ -150,14 +170,24 @@ export function LocationSignup() {
               />
             </div>
 
-            <input
-              required
-              type="tel"
-              placeholder="Teléfono / WhatsApp de contacto"
-              value={form.telefono}
-              onChange={update("telefono")}
-              className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-gold-500"
-            />
+            <div className="grid gap-4 sm:grid-cols-2">
+              <input
+                required
+                type="tel"
+                placeholder="Teléfono / WhatsApp de contacto"
+                value={form.telefono}
+                onChange={update("telefono")}
+                className="rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-gold-500"
+              />
+              <input
+                required
+                type="email"
+                placeholder="Correo electrónico"
+                value={form.email}
+                onChange={update("email")}
+                className="rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-gold-500"
+              />
+            </div>
 
             <Button type="submit" size="lg" className="w-full">
               Enviar por WhatsApp <Send className="h-4 w-4" />
