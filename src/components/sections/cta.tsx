@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/lib/site-config";
+import { productConfig, siteConfig } from "@/lib/site-config";
 
 export function CallToAction() {
   return (
@@ -16,10 +16,10 @@ export function CallToAction() {
         className="mx-auto max-w-4xl overflow-hidden rounded-3xl border border-gold-500/30 bg-gradient-to-br from-gold-500/10 via-surface to-surface p-10 text-center md:p-16"
       >
         <h2 className="text-3xl font-bold text-foreground md:text-4xl">
-          ¿Listo para surtir tu tienda?
+          ¿Listo para pedir tu {productConfig.name}?
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-muted">
-          Escríbenos con la cantidad y los modelos que necesitas. Te
+          Escríbenos con la cantidad, el color y la talla que necesitas. Te
           respondemos con tu cotización en menos de 24 horas.
         </p>
         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">

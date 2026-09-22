@@ -1,18 +1,20 @@
 // Configuración central del sitio: un solo lugar para actualizar dominio,
-// contacto y redes sociales cuando existan las cuentas/número definitivos.
+// contacto, redes sociales y datos del producto cuando existan los
+// definitivos.
 export const siteConfig = {
   name: "Orion Caps",
   // TODO: reemplazar por el dominio real cuando esté comprado/apuntado
   url: "https://orioncaps.com",
   description:
-    "Orion Caps: gorras de calidad premium al por mayor y al detal, con personalización y bordado, y envíos a todo el país.",
+    "Orion Cap: la gorra insignia de Orion Caps. Diseño premium urbano, bordado 3D y materiales de alta durabilidad. Disponible al detal y por mayoreo.",
   keywords: [
+    "Orion Cap",
+    "gorra premium",
+    "gorra urbana",
     "gorras al por mayor",
     "gorras personalizadas",
     "gorras al detal",
-    "distribuidor de gorras",
-    "gorras bordadas",
-    "venta de gorras",
+    "gorra bordada",
     "Orion Caps",
   ],
   locale: "es_CO",
@@ -27,4 +29,20 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/orioncaps",
     facebook: "https://www.facebook.com/orioncaps",
   },
+} as const;
+
+// Producto protagonista de la landing. Precio y detalles marcados como
+// placeholder hasta que se confirmen los definitivos.
+export const productConfig = {
+  name: "Orion Cap",
+  tagline: "La gorra insignia de Orion Caps",
+  description:
+    "Diseño premium de inspiración urbana, con acabado texturizado mate, logo bordado en relieve (puff 3D) y construcción de alta durabilidad.",
+  // TODO: precio de referencia, confirmar antes de publicar
+  priceDetal: 89900,
+  priceMayoreoDesde: 65000,
+  priceDistribuidorDesde: 52000,
+  currency: "COP",
+  colors: ["Negro Onix", "Gris Grafito", "Azul Marino", "Verde Militar"],
+  fit: "Ajuste snapback (talla única ajustable)",
 } as const;

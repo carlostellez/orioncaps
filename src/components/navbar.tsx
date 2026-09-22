@@ -6,8 +6,8 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const links = [
+  { href: "#producto", label: "El producto" },
   { href: "#mercado", label: "Mercado" },
-  { href: "#productos", label: "Productos" },
   { href: "#mayoreo", label: "Mayoreo" },
   { href: "#testimonios", label: "Testimonios" },
   { href: "#faq", label: "Preguntas frecuentes" },

@@ -1,10 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Package, ShieldCheck } from "lucide-react";
+import { ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { productConfig, siteConfig } from "@/lib/site-config";
+
+const priceFormatter = new Intl.NumberFormat("es-CO", {
+  style: "currency",
+  currency: productConfig.currency,
+  maximumFractionDigits: 0,
+});
 
 export function Hero() {
   return (
@@ -23,38 +30,43 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <Badge>Mayoreo y detal en toda la república</Badge>
+          <Badge>Línea insignia {siteConfig.name}</Badge>
 
           <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-foreground md:text-6xl">
-            Gorras de calidad premium,{" "}
-            <span className="text-gold-500">al precio de mayoreo</span>
+            <span className="text-gold-500">{productConfig.name}</span>: diseño
+            urbano, calidad premium
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-            En Orion Caps confeccionamos y distribuimos gorras para tiendas,
-            distribuidores y marcas. Compra por unidad o por volumen, con
-            personalización y bordado incluidos.
+            {productConfig.description}
           </p>
+
+          <div className="mt-6 flex items-baseline gap-3">
+            <span className="text-3xl font-semibold text-foreground">
+              {priceFormatter.format(productConfig.priceDetal)}
+            </span>
+            <span className="text-sm text-muted">precio al detal · unidad</span>
+          </div>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <Button size="lg" asChild>
               <a href="#cotizar">
-                Solicitar cotización <ArrowRight className="h-4 w-4" />
+                Consultar disponibilidad <ArrowRight className="h-4 w-4" />
               </a>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <a href="#productos">Ver catálogo</a>
+              <a href="#producto">Ver detalles del producto</a>
             </Button>
           </div>
 
           <div className="mt-10 flex flex-wrap gap-6 text-sm text-muted">
             <div className="flex items-center gap-2">
               <ShieldCheck className="h-4 w-4 text-gold-500" />
-              Calidad garantizada
+              Bordado 3D incluido
             </div>
             <div className="flex items-center gap-2">
-              <Package className="h-4 w-4 text-gold-500" />
-              Envíos a todo el país
+              <Sparkles className="h-4 w-4 text-gold-500" />
+              {productConfig.colors.length} colores disponibles
             </div>
           </div>
         </motion.div>
@@ -66,7 +78,9 @@ export function Hero() {
           className="relative aspect-square w-full max-w-md justify-self-center overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-surface to-background md:justify-self-end"
         >
           <div className="flex h-full w-full items-center justify-center">
-            <span className="text-8xl">{"🧢"}</span>
+            <span className="text-8xl" role="img" aria-label={`${productConfig.name}, gorra premium de diseño urbano`}>
+              {"🧢"}
+            </span>
           </div>
         </motion.div>
       </div>

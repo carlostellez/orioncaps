@@ -4,25 +4,23 @@ import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
+import { productConfig } from "@/lib/site-config";
 
 const testimonials = [
   {
     name: "Laura Martínez",
     role: "Dueña, Tienda Urbana",
-    quote:
-      "Llevamos dos años comprando por mayoreo con Orion Caps. La calidad es constante y los tiempos de entrega siempre se cumplen.",
+    quote: `El ${productConfig.name} es de lo mejor que hemos vendido. El bordado 3D se nota apenas lo ves, y la calidad se mantiene pedido tras pedido.`,
   },
   {
     name: "Carlos Ramírez",
     role: "Distribuidor regional",
-    quote:
-      "El programa de distribuidor cambió nuestro margen. Precios netos claros y un asesor que responde rápido.",
+    quote: `El programa de distribuidor con el ${productConfig.name} cambió nuestro margen. Precios netos claros y un asesor que responde rápido.`,
   },
   {
     name: "Andrea Gómez",
     role: "Marca de streetwear",
-    quote:
-      "El bordado personalizado quedó exactamente como lo diseñamos. Ahora es nuestro proveedor fijo de gorras.",
+    quote: `Personalizamos el ${productConfig.name} con nuestro logo y quedó exactamente como lo diseñamos. Ahora es nuestra gorra insignia.`,
   },
 ];
 

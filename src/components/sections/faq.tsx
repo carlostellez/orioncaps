@@ -8,22 +8,26 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { productConfig } from "@/lib/site-config";
 
 const faqs = [
   {
+    question: `¿Qué tallas o ajuste tiene el ${productConfig.name}?`,
+    answer: productConfig.fit,
+  },
+  {
+    question: "¿En qué colores está disponible?",
+    answer: `Actualmente en ${productConfig.colors.join(", ")}. Consulta disponibilidad de cada color al momento de cotizar.`,
+  },
+  {
     question: "¿Cuál es la cantidad mínima para comprar al por mayor?",
     answer:
-      "El precio de mayoreo aplica desde 12 unidades por modelo. Para el nivel distribuidor, el mínimo es de 100 unidades.",
+      "El precio de mayoreo aplica desde 12 unidades. Para el nivel distribuidor, el mínimo es de 100 unidades.",
   },
   {
-    question: "¿Hacen bordado o estampado personalizado?",
+    question: "¿Hacen bordado personalizado sobre este modelo?",
     answer:
-      "Sí, ofrecemos bordado personalizado desde 12 unidades. Envíanos tu logo y te confirmamos el costo por unidad.",
-  },
-  {
-    question: "¿A qué ciudades hacen envíos?",
-    answer:
-      "Realizamos envíos a todo el país a través de transportadoras aliadas, con número de seguimiento incluido.",
+      "Sí, podemos bordar tu logo sobre el mismo molde desde 12 unidades. Envíanos tu diseño y te confirmamos el costo.",
   },
   {
     question: "¿Cuáles son los tiempos de entrega?",
