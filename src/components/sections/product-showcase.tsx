@@ -112,12 +112,12 @@ export function ProductShowcase() {
           </p>
         </motion.div>
 
-        <div className="mt-16 grid grid-cols-2 gap-5 sm:gap-6 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-2 gap-x-5 gap-y-16 sm:gap-x-6 sm:gap-y-20 lg:grid-cols-4">
           {productConfig.colorSwatches.map((swatch, i) => (
             <ColorCard
               key={swatch.name}
               swatch={swatch}
-              speed={i % 2 === 0 ? 36 : -36}
+              speed={i % 2 === 0 ? 18 : -18}
             />
           ))}
         </div>
