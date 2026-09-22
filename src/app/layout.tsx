@@ -13,13 +13,15 @@ export const viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | Gorras al por mayor y detal`,
+    default: `${siteConfig.name} | Gorras Personalizadas para Empresas y Eventos`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [...siteConfig.keywords],
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "Moda y accesorios",
   alternates: {
     canonical: "/",
   },
@@ -30,6 +32,8 @@ export const metadata: Metadata = {
       index: true,
       follow: true,
       "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
   openGraph: {
@@ -37,20 +41,20 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} | Gorras al por mayor y detal`,
+    title: `${siteConfig.name} | Gorras Personalizadas para Empresas y Eventos`,
     description: siteConfig.description,
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} - Gorras al por mayor y detal`,
+        alt: `${siteConfig.name} - Gorras personalizadas para empresas`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Gorras al por mayor y detal`,
+    title: `${siteConfig.name} | Gorras Personalizadas para Empresas y Eventos`,
     description: siteConfig.description,
     images: ["/opengraph-image"],
   },

@@ -155,7 +155,12 @@ export function Hero() {
             </Button>
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-6 text-sm text-muted">
+          <p className="mt-6 max-w-md text-sm text-muted">
+            Gorras personalizadas al por mayor y al detal para empresas,
+            agencias de marketing y eventos corporativos en toda Colombia.
+          </p>
+
+          <div className="mt-6 flex flex-wrap gap-6 text-sm text-muted">
             <div className="flex items-center gap-2">
               <ShieldCheck className="h-4 w-4 text-accent" />
               Bordado 3D incluido

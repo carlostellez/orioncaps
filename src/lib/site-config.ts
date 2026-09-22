@@ -6,16 +6,24 @@ export const siteConfig = {
   // TODO: reemplazar por el dominio real cuando esté comprado/apuntado
   url: "https://orioncaps.com",
   description:
-    "Orion Cap: la gorra insignia de Orion Caps. Diseño premium urbano, bordado 3D y materiales de alta durabilidad. Disponible al detal y por mayoreo.",
+    "Gorras personalizadas y bordadas para empresas, agencias de marketing y startups. Calidad premium, precios de mayoreo y detal, despacho a toda Colombia.",
   keywords: [
     "Orion Cap",
-    "gorra premium",
-    "gorra urbana",
-    "gorras al por mayor",
-    "gorras personalizadas",
-    "gorras al detal",
-    "gorra bordada",
     "Orion Caps",
+    "gorras personalizadas para empresas",
+    "gorras corporativas Colombia",
+    "gorras publicitarias",
+    "merchandising corporativo gorras",
+    "regalos corporativos gorras",
+    "gorras con logo bordado",
+    "gorras para agencias de marketing",
+    "gorras para eventos corporativos",
+    "dotación empresarial gorras",
+    "gorras al por mayor Bogotá",
+    "proveedor de gorras al por mayor Colombia",
+    "gorra premium urbana",
+    "gorras bordado 3D",
+    "gorras al detal",
   ],
   locale: "es_CO",
   contact: {
@@ -38,7 +46,7 @@ export const productConfig = {
   name: "Orion Cap",
   tagline: "La gorra insignia de Orion Caps",
   description:
-    "Diseño premium de inspiración urbana, con acabado texturizado mate, logo bordado en relieve (puff 3D) y construcción de alta durabilidad.",
+    "Diseño premium de inspiración urbana con acabado texturizado mate, logo bordado en relieve (puff 3D) y construcción de alta durabilidad — ideal para dotar equipos, agencias y marcas que buscan calidad en cada detalle.",
   // TODO: precio de referencia, confirmar antes de publicar
   priceDetal: 89900,
   priceMayoreoDesde: 65000,
@@ -96,5 +104,38 @@ export const heroProducts = [
       "Bordado 3D XL y detalles en cuero genuino en la correa trasera, para quienes buscan un extra de exclusividad.",
     price: 109900,
     accentHex: "#3f4a34", // Verde Militar
+  },
+] as const;
+
+// Preguntas frecuentes, reutilizadas tanto en la sección visual (FAQ) como
+// en el JSON-LD de FAQPage para SEO (rich snippets en resultados de Google).
+export const faqs = [
+  {
+    question: `¿Qué tallas o ajuste tiene el ${productConfig.name}?`,
+    answer: productConfig.fit,
+  },
+  {
+    question: "¿En qué colores está disponible?",
+    answer: `Actualmente en ${productConfig.colors.join(", ")}. Consulta disponibilidad de cada color al momento de cotizar.`,
+  },
+  {
+    question: "¿Cuál es la cantidad mínima para comprar al por mayor?",
+    answer:
+      "El precio de mayoreo aplica desde 12 unidades. Para el nivel distribuidor, el mínimo es de 100 unidades.",
+  },
+  {
+    question: "¿Hacen bordado personalizado sobre este modelo?",
+    answer:
+      "Sí, podemos bordar tu logo sobre el mismo molde desde 12 unidades. Envíanos tu diseño y te confirmamos el costo.",
+  },
+  {
+    question: "¿Cuáles son los tiempos de entrega?",
+    answer:
+      "Pedidos en stock se despachan en 24-48 horas. Pedidos con bordado personalizado tardan entre 5 y 8 días hábiles.",
+  },
+  {
+    question: "¿Hacen pedidos para empresas, agencias o eventos corporativos?",
+    answer:
+      "Sí, es uno de nuestros principales enfoques: dotamos equipos, campañas y activaciones de agencias de marketing, startups y empresas con gorras personalizadas y facturación empresarial.",
   },
 ] as const;

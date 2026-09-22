@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = `${siteConfig.name} - Gorras al por mayor y detal`;
+export const alt = `${siteConfig.name} - Gorras personalizadas para empresas`;
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -43,7 +43,7 @@ export default function OpengraphImage() {
             color: "#a39a86",
           }}
         >
-          Gorras al por mayor y detal
+          Gorras personalizadas para empresas
         </div>
         <div
           style={{
