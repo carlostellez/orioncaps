@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/site-config";
 
 export function CallToAction() {
   return (
@@ -23,12 +24,16 @@ export function CallToAction() {
         </p>
         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
           <Button size="lg" asChild>
-            <a href="https://wa.me/573000000000" target="_blank" rel="noreferrer">
+            <a
+              href={`https://wa.me/${siteConfig.contact.whatsapp}`}
+              target="_blank"
+              rel="noreferrer"
+            >
               Escribir por WhatsApp
             </a>
           </Button>
           <Button size="lg" variant="outline" asChild>
-            <a href="mailto:ventas@orioncaps.com">ventas@orioncaps.com</a>
+            <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a>
           </Button>
         </div>
       </motion.div>
