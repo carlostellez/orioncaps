@@ -19,6 +19,7 @@ type FormState = {
   cantidad: string;
   telefono: string;
   email: string;
+  aceptaDatos: boolean;
 };
 
 const initialState: FormState = {
@@ -29,6 +30,7 @@ const initialState: FormState = {
   cantidad: "",
   telefono: "",
   email: "",
+  aceptaDatos: false,
 };
 
 export function LocationSignup() {
@@ -42,6 +44,7 @@ export function LocationSignup() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!form.aceptaDatos) return;
 
     const message = [
       "Hola, quiero registrarme como distribuidor/mayorista de Orion Caps.",
@@ -189,7 +192,36 @@ export function LocationSignup() {
               />
             </div>
 
-            <Button type="submit" size="lg" className="w-full">
+            <label className="flex items-start gap-3 text-xs text-muted">
+              <input
+                required
+                type="checkbox"
+                checked={form.aceptaDatos}
+                onChange={(e) =>
+                  setForm((prev) => ({ ...prev, aceptaDatos: e.target.checked }))
+                }
+                className="mt-0.5 h-4 w-4 shrink-0 rounded border-border accent-gold-600"
+              />
+              <span>
+                Autorizo el tratamiento de mis datos personales según la{" "}
+                <a
+                  href="/privacidad"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-accent underline underline-offset-2"
+                >
+                  política de tratamiento de datos
+                </a>{" "}
+                de {siteConfig.name}, con el fin de recibir esta cotización.
+              </span>
+            </label>
+
+            <Button
+              type="submit"
+              size="lg"
+              className="w-full"
+              disabled={!form.aceptaDatos}
+            >
               Enviar por WhatsApp <Send className="h-4 w-4" />
             </Button>
 

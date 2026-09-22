@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
+import { Analytics } from "@/components/analytics";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 
 export const viewport = {
@@ -68,6 +69,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="bg-background text-foreground antialiased">
+        <Analytics />
         {children}
         <WhatsAppButton />
       </body>

@@ -9,6 +9,7 @@ const navLinks = [
   { href: "#testimonios", label: "Testimonios" },
   { href: "#ubicacion", label: "Ubícanos" },
   { href: "#faq", label: "Preguntas frecuentes" },
+  { href: "/privacidad", label: "Política de privacidad" },
 ];
 
 const contactLinks = [
