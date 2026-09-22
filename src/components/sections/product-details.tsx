@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Layers, Ruler, Settings2, Stamp } from "lucide-react";
 
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { productConfig } from "@/lib/site-config";
 
 const details = [
@@ -36,38 +35,58 @@ export function ProductDetails() {
   return (
     <section id="producto" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mx-auto max-w-2xl text-center"
-        >
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">
-            Materiales y construcción del {productConfig.name}
-          </h2>
-          <p className="mt-4 text-muted">
-            Cada detalle está pensado para que la gorra se vea igual de bien
-            el primer día que después de meses de uso.
-          </p>
-        </motion.div>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,320px)_1fr]">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:sticky lg:top-28 lg:self-start"
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-500">
+              Ficha técnica
+            </p>
+            <h2 className="mt-3 text-3xl font-bold leading-tight text-foreground md:text-4xl">
+              Materiales y construcción del {productConfig.name}
+            </h2>
+            <p className="mt-4 text-muted">
+              Cada detalle está pensado para que la gorra se vea igual de
+              bien el primer día que después de meses de uso.
+            </p>
+          </motion.div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {details.map((detail, i) => (
-            <motion.div
-              key={detail.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-            >
-              <Card className="h-full">
-                <detail.icon className="h-8 w-8 text-gold-500" />
-                <CardTitle className="mt-4">{detail.title}</CardTitle>
-                <CardDescription>{detail.description}</CardDescription>
-              </Card>
-            </motion.div>
-          ))}
+          {/* Lista tipo línea de tiempo: cada renglón numerado, conectado
+              por una línea vertical — en vez del grid de tarjetas genérico */}
+          <div className="relative">
+            <div className="absolute left-[19px] top-2 bottom-2 w-px bg-border" />
+            <ul className="space-y-10">
+              {details.map((detail, i) => (
+                <motion.li
+                  key={detail.title}
+                  initial={{ opacity: 0, x: 16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="relative flex gap-6 pl-0"
+                >
+                  <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold-500/40 bg-background text-xs font-semibold text-gold-500">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <div className="flex-1 pb-2">
+                    <div className="flex items-center gap-2">
+                      <detail.icon className="h-5 w-5 text-gold-500" />
+                      <h3 className="text-lg font-semibold text-foreground">
+                        {detail.title}
+                      </h3>
+                    </div>
+                    <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
+                      {detail.description}
+                    </p>
+                  </div>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <motion.div
@@ -75,19 +94,20 @@ export function ProductDetails() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-14 rounded-2xl border border-border bg-surface/60 p-8"
+          className="mt-16 border-t border-border pt-10"
         >
-          <p className="text-sm font-semibold text-foreground">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
             Colores disponibles
           </p>
-          <div className="mt-4 flex flex-wrap gap-3">
-            {productConfig.colors.map((color) => (
-              <span
-                key={color}
-                className="rounded-full border border-border bg-background px-4 py-2 text-sm text-foreground/90"
-              >
-                {color}
-              </span>
+          <div className="mt-5 flex flex-wrap gap-4">
+            {productConfig.colorSwatches.map((swatch) => (
+              <div key={swatch.name} className="flex items-center gap-3">
+                <span
+                  className="h-9 w-9 shrink-0 rounded-full ring-1 ring-border"
+                  style={{ backgroundColor: swatch.hex }}
+                />
+                <span className="text-sm text-foreground/90">{swatch.name}</span>
+              </div>
             ))}
           </div>
         </motion.div>

@@ -70,56 +70,66 @@ export function Pricing() {
           </p>
         </motion.div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {tiers.map((tier, i) => (
-            <motion.div
-              key={tier.name}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={cn(
-                "flex flex-col rounded-2xl border p-8",
-                tier.highlighted
-                  ? "border-gold-500/50 bg-gold-500/[0.06] shadow-xl shadow-gold-500/10"
-                  : "border-border bg-surface/60"
-              )}
-            >
-              {tier.highlighted && (
-                <span className="mb-4 w-fit rounded-full bg-gold-600 px-3 py-1 text-xs font-semibold text-black-900">
-                  Más elegido
-                </span>
-              )}
-              <h3 className="text-xl font-bold text-foreground">{tier.name}</h3>
-              <span className="mt-1 inline-block w-fit rounded-full bg-gold-500/15 px-2 py-0.5 text-xs font-semibold text-foreground">
-                {tier.range}
-              </span>
+        <div className="mt-14 grid gap-6 md:grid-cols-3 md:items-center">
+          {tiers.map((tier, i) => {
+            const savings = Math.round((1 - tier.price / productConfig.priceDetal) * 100);
 
-              <p className="mt-4 text-2xl font-semibold text-foreground">
-                {tier.priceLabel ? `${tier.priceLabel} ` : ""}
-                {priceFormatter.format(tier.price)}
-                <span className="text-sm font-normal text-muted"> / unidad</span>
-              </p>
-              <p className="mt-3 text-sm text-muted">{tier.description}</p>
-
-              <ul className="mt-6 flex-1 space-y-3">
-                {tier.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-sm text-foreground/90">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              <Button
-                className="mt-8"
-                variant={tier.highlighted ? "default" : "outline"}
-                asChild
+            return (
+              <motion.div
+                key={tier.name}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className={cn(
+                  "relative flex flex-col rounded-2xl p-8",
+                  tier.highlighted
+                    ? "border-2 border-gold-500 bg-surface shadow-2xl shadow-gold-500/20 md:-translate-y-4 md:scale-[1.04]"
+                    : "border border-border bg-transparent"
+                )}
               >
-                <a href="#cotizar">Cotizar {tier.name.toLowerCase()}</a>
-              </Button>
-            </motion.div>
-          ))}
+                {tier.highlighted && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-gold-600 px-4 py-1 text-xs font-semibold text-black-900 shadow">
+                    Más elegido
+                  </span>
+                )}
+
+                <h3 className="text-xl font-bold text-foreground">{tier.name}</h3>
+                <span className="mt-1 inline-block w-fit rounded-full bg-gold-500/15 px-2 py-0.5 text-xs font-semibold text-foreground">
+                  {tier.range}
+                </span>
+
+                <p className="mt-4 text-2xl font-semibold text-foreground">
+                  {tier.priceLabel ? `${tier.priceLabel} ` : ""}
+                  {priceFormatter.format(tier.price)}
+                  <span className="text-sm font-normal text-muted"> / unidad</span>
+                </p>
+                {savings > 0 && (
+                  <p className="mt-1 text-xs font-medium text-gold-500">
+                    Ahorras {savings}% vs. detal
+                  </p>
+                )}
+                <p className="mt-3 text-sm text-muted">{tier.description}</p>
+
+                <ul className="mt-6 flex-1 space-y-3">
+                  {tier.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2 text-sm text-foreground/90">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <Button
+                  className="mt-8"
+                  variant={tier.highlighted ? "default" : "outline"}
+                  asChild
+                >
+                  <a href="#cotizar">Cotizar {tier.name.toLowerCase()}</a>
+                </Button>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

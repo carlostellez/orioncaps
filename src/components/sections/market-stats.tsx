@@ -17,36 +17,28 @@ function ShareMeter() {
   const offset = circumference * (1 - value / 100);
 
   return (
-    <div className="flex items-center gap-5">
-      <svg width="128" height="128" viewBox="0 0 128 128" className="shrink-0 -rotate-90">
-        <circle
-          cx="64"
-          cy="64"
-          r={radius}
-          fill="none"
-          stroke="var(--color-gold-500)"
-          strokeOpacity={0.18}
-          strokeWidth="12"
-        />
-        <circle
-          cx="64"
-          cy="64"
-          r={radius}
-          fill="none"
-          stroke="var(--color-gold-500)"
-          strokeWidth="12"
-          strokeLinecap="round"
-          strokeDasharray={circumference}
-          strokeDashoffset={offset}
-        />
-      </svg>
-      <div>
-        <p className="text-3xl font-semibold text-foreground">30–40%</p>
-        <p className="mt-1 text-sm text-muted">
-          de las ventas de muchas marcas de streetwear
-        </p>
-      </div>
-    </div>
+    <svg width="128" height="128" viewBox="0 0 128 128" className="shrink-0 -rotate-90">
+      <circle
+        cx="64"
+        cy="64"
+        r={radius}
+        fill="none"
+        stroke="var(--color-gold-500)"
+        strokeOpacity={0.18}
+        strokeWidth="12"
+      />
+      <circle
+        cx="64"
+        cy="64"
+        r={radius}
+        fill="none"
+        stroke="var(--color-gold-500)"
+        strokeWidth="12"
+        strokeLinecap="round"
+        strokeDasharray={circumference}
+        strokeDashoffset={offset}
+      />
+    </svg>
   );
 }
 
@@ -86,32 +78,33 @@ export function MarketStats() {
           </p>
         </motion.div>
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-2">
+        {/* Fila 1: el dato y la cita, ambos con una cifra/glifo enorme de
+            fondo como marca de agua tipográfica — el mismo tratamiento
+            editorial en las dos tarjetas para que se lean como un par */}
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="space-y-8"
+            className="relative overflow-hidden rounded-3xl border border-border bg-surface/60 p-10"
           >
-            <div>
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -right-4 -top-6 text-[7rem] font-bold leading-none text-gold-500/10 select-none"
+            >
+              35%
+            </span>
+            <div className="relative flex items-center gap-6">
               <ShareMeter />
-              <p className="mt-2 text-xs text-muted">{SOURCE}</p>
+              <div>
+                <p className="text-4xl font-semibold text-foreground">30–40%</p>
+                <p className="mt-1 max-w-[16rem] text-sm text-muted">
+                  de las ventas de muchas marcas de streetwear
+                </p>
+              </div>
             </div>
-
-            <ul className="space-y-6">
-              {stats.map((stat) => (
-                <li key={stat.text} className="flex gap-4">
-                  <stat.icon className="h-6 w-6 shrink-0 text-gold-500" />
-                  <div>
-                    <p className="text-sm leading-relaxed text-foreground/90">
-                      {stat.text}
-                    </p>
-                    <p className="mt-1 text-xs text-muted">{SOURCE}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <p className="relative mt-6 text-xs text-muted">{SOURCE}</p>
           </motion.div>
 
           <motion.div
@@ -119,15 +112,45 @@ export function MarketStats() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-col justify-center rounded-3xl border border-border bg-surface/60 p-10"
+            className="relative overflow-hidden rounded-3xl border border-gold-500/30 bg-gold-500/[0.06] p-10"
           >
-            <Quote className="h-10 w-10 text-gold-500" />
-            <p className="mt-6 text-2xl font-semibold leading-snug text-foreground">
+            <Quote
+              aria-hidden
+              className="pointer-events-none absolute -right-3 -top-3 h-28 w-28 text-gold-500/10"
+              strokeWidth={1}
+            />
+            <p className="relative text-2xl font-semibold leading-snug text-foreground">
               La <span className="text-gold-500">gorra</span> dejó de ser un
               accesorio para convertirse en un símbolo de identidad, estilo y
               cultura.
             </p>
           </motion.div>
+        </div>
+
+        {/* Fila 2: los tres datos de contexto, como franja horizontal con
+            números grandes en vez de la lista vertical de íconos */}
+        <div className="mt-6 grid gap-6 md:grid-cols-3">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.text}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
+              className="rounded-3xl border border-border bg-surface/60 p-8"
+            >
+              <div className="flex items-center justify-between">
+                <stat.icon className="h-6 w-6 text-gold-500" />
+                <span className="text-3xl font-bold text-border">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <p className="mt-5 text-sm leading-relaxed text-foreground/90">
+                {stat.text}
+              </p>
+              <p className="mt-4 text-xs text-muted">{SOURCE}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
