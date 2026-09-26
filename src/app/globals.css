@@ -1,6 +1,17 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Paleta de marca — fuente de verdad: doc "PALETA DE COLORES" (Google Drive).
+   Del doc se adoptó la escala numérica de dorado (--color-gold-50..900, más
+   abajo) y se conservaron los neutros cálidos que ya existían aquí, ya
+   validados visualmente. Se descartaron a propósito dos partes del doc:
+   - El bloque alternativo "Design Tokens de rol" (primary #B8860B, hover
+     #996515, accent #D4AF37): es una paleta de dorado distinta e
+     incompatible con la escala numérica ya implementada.
+   - El verde salvia (#5CB283) y el gris #383838 mencionados al inicio: notas
+     exploratorias de una iteración anterior, no adoptadas.
+   No "corregir" este archivo contra el doc sin revisar antes esta nota. */
+
 /* Modo claro (por defecto, y también cuando el interruptor de tema fuerza
    "claro" aunque el sistema esté en oscuro). */
 :root {
@@ -88,6 +99,10 @@
   --color-gold-700: #805f23;
   --color-gold-800: #604419;
   --color-gold-900: #432e11;
+
+  /* Alias semánticos (regla WCAG del doc: nunca texto blanco sobre dorado) */
+  --color-text-on-gold: var(--color-black-900);
+  --color-border-gold: var(--color-gold-500);
 
   /* Feedback */
   --color-success: #10b981;

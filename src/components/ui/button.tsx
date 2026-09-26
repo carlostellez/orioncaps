@@ -13,7 +13,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-gold-600 text-black-900 hover:bg-gold-400 shadow-lg shadow-gold-500/20",
+          "bg-gold-600 text-text-on-gold hover:bg-gold-400 shadow-lg shadow-gold-500/20",
         outline:
           "border border-border text-foreground hover:bg-surface",
         ghost: "text-foreground hover:bg-surface",
