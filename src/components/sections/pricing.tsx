@@ -89,7 +89,7 @@ export function Pricing() {
                 )}
               >
                 {tier.highlighted && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-gold-600 px-4 py-1 text-xs font-semibold text-black-900 shadow">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-gold-600 px-4 py-1 text-xs font-semibold text-text-on-gold shadow">
                     Más elegido
                   </span>
                 )}

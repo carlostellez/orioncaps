@@ -69,7 +69,7 @@ export function ProductDetails() {
                   transition={{ duration: 0.5, delay: i * 0.08 }}
                   className="relative flex gap-6 pl-0"
                 >
-                  <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold-500/40 bg-background text-xs font-semibold text-accent">
+                  <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border-gold/40 bg-background text-xs font-semibold text-accent">
                     {String(i + 1).padStart(2, "0")}
                   </div>
                   <div className="flex-1 pb-2">
