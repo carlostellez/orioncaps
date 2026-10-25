@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { submitContact } from "@/lib/contact-api";
 import { heroProducts, siteConfig } from "@/lib/site-config";
 
 const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
@@ -33,8 +34,12 @@ const initialState: FormState = {
   aceptaDatos: false,
 };
 
+type SubmitStatus = "idle" | "sending" | "sent" | "error";
+
 export function LocationSignup() {
   const [form, setForm] = useState<FormState>(initialState);
+  const [status, setStatus] = useState<SubmitStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const update =
     (field: keyof FormState) =>
@@ -42,11 +47,11 @@ export function LocationSignup() {
       setForm((prev) => ({ ...prev, [field]: e.target.value }));
     };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!form.aceptaDatos) return;
+    if (!form.aceptaDatos || status === "sending") return;
 
-    const message = [
+    const whatsappMessage = [
       "Hola, quiero registrarme como distribuidor/mayorista de Orion Caps.",
       `Nombre: ${form.nombre}`,
       `Negocio/Tienda: ${form.negocio}`,
@@ -57,7 +62,25 @@ export function LocationSignup() {
       `Correo: ${form.email}`,
     ].join("\n");
 
-    const href = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(message)}`;
+    setStatus("sending");
+    const result = await submitContact({
+      full_name: form.nombre,
+      email: form.email,
+      phone: form.telefono,
+      company: form.negocio,
+      product_type: form.producto,
+      quantity: form.cantidad,
+      message: `Registro de distribuidor/mayorista.\nCiudad: ${form.ciudad}.\nProducto de interés: ${form.producto}.\nCantidad estimada mensual: ${form.cantidad}.`,
+    });
+
+    if (result.ok) {
+      setStatus("sent");
+    } else {
+      setStatus("error");
+      setErrorMessage(result.message);
+    }
+
+    const href = `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(href, "_blank", "noreferrer");
   };
 
@@ -224,10 +247,23 @@ export function LocationSignup() {
               type="submit"
               size="lg"
               className="w-full"
-              disabled={!form.aceptaDatos}
+              disabled={!form.aceptaDatos || status === "sending"}
             >
-              Enviar por WhatsApp <Send className="h-4 w-4" />
+              {status === "sending" ? "Enviando..." : "Enviar por WhatsApp"}{" "}
+              <Send className="h-4 w-4" />
             </Button>
+
+            {status === "sent" && (
+              <p className="text-xs font-medium text-green-600">
+                Recibimos tu registro y te enviamos un correo de confirmación.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="text-xs font-medium text-red-500">
+                {errorMessage} Igual abrimos WhatsApp para que no pierdas tu
+                cotización.
+              </p>
+            )}
 
             <p className="text-xs text-muted">
               Al enviar se abre WhatsApp con tus datos ya escritos, listos
